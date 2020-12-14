@@ -14,7 +14,6 @@ for l in lines:
 def find2020(numbers):
 	for i in range(0, len(numbers)):
 		# assign number to the value at current index
-		# and make sure it's an integer!!
 		number1 = numbers[i]
 
 		# check the sum of all numbers after it
@@ -32,5 +31,9 @@ def find2020(numbers):
 
 result = find2020(numbers)
 
-print('The result is ' + str(result[0]) + \
-	"*" + str(result[1]) + '=' + str(result[0]*result[1]))
+n1 = result[0]
+n2 = result[1]
+product = n1*n2
+
+print('The result is ' + str(n1) + \
+	"*" + str(n2) + '=' + str(product))

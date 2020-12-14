@@ -11,7 +11,7 @@ for l in lines:
 	numbers.append(int(l))
 
 # first, find all combinations that combine to under 2020
-# and store these in array summedUnder20
+# and store these in array summedUnder2020
 summedUnder2020 = []
 
 # loop over numbers
@@ -19,7 +19,6 @@ def findUnder2020(numbers):
 	global summedUnder2020
 	for i in range(0, len(numbers)):
 		# assign number to the value at current index
-		# and make sure it's an integer!!
 		number1 = numbers[i]
 
 		# check the sum of all numbers after it
@@ -53,9 +52,13 @@ def find2020(inputnumber):
 		
 	return -1
 
+# first add all numbers that sum to less than 2020 to the
+# array summedUnder2020
 findUnder2020(numbers)
 
-for member in summedUnder20:
+# then, check each pair (n1, n2) against other members to see
+# if they sum to 2020
+for member in summedUnder2020:
 	n1 = member[0]
 	n2 = member[1]
 	n3 = find2020(n1+n2)
