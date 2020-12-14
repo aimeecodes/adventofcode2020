@@ -104,3 +104,10 @@ def GetNumber(bagname):
 	# and there are no more bags to check
 
 	return bags_inside
+
+desired_bag = 'shiny gold'
+
+result = GetNumber(desired_bag)
+
+print('There are ' + str(result) + \
+	' bags inside 1 ' + str(desired_bag) + ' bag.')
