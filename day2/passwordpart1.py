@@ -3,9 +3,6 @@ inputfile = './input.txt'
 with open(inputfile) as f:
 	lines = [line.rstrip('\n') for line in f]
 
-def split(word):
-	return [char for char in word]
-
 # function that returns the number of specified
 # characters in a given string
 def NumberOfLetters(character, password):
