@@ -4,11 +4,7 @@ with open(inputfile) as f:
 	lines = [line.rstrip('\n') for line in f]
 
 # initialze numbers array
-numbers = []
-
-# first, store these in a numerical array instead of text
-for l in lines:
-	numbers.append(int(l))
+numbers = [int(x) for x in lines]
 
 # loop over numbers
 def find2020(numbers):
