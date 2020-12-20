@@ -47,7 +47,7 @@ while idx < len(numbers):
 
 	result = CanBeMade(temparr, temp)
 
-	results.append([numbers[idx], result])
+	results.append([numbers[idx], result, idx])
 
 	# increase index and slices
 	idx += 1
@@ -60,7 +60,6 @@ r = True
 
 while r == True:
 	temp = results[idx]
-	print(temp)
 	r = temp[1]
 	idx += 1
 
