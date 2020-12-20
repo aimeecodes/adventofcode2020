@@ -9,6 +9,8 @@ numbers = [int(x) for x in numbers]
 # initialize special number variable which holds the
 # number which is the sum of a contiguous set of at least
 # 2 numbers from input
+
+# note - need to add way to port this over from part 1
 special = 133015568
 
 # index of special number
