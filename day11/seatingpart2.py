@@ -2,7 +2,7 @@ from collections import deque
 import copy
 import time
 
-print('~ * ~ Day 11 Part 1 ~ * ~')
+print('~ * ~ Day 11 Part 2 ~ * ~')
 
 start = time.process_time()
 
@@ -54,32 +54,46 @@ def checkNeighbours(board, i,j):
 	# empty list to append neighbours results into
 	n_list = []
 
-	for row in range(minsearch, maxsearch):
-		for col in range(minsearch, maxsearch):
-			# update n_row and n_col to check around i, j
-			n_row = i + row
-			n_col = j + col
+	for d in directions:
+		# assign variables to the direction vectors
+		r = d[0]
+		c = d[1]
 
-			# set behaviour to default to valid neighbour,
-			# unless one of the following if elses are tripped:
-			valid_n = True
+		# init variable to hold character value
+		char = '.'
 
-			# return False if this is checking itself
-			if (n_row == i) and (n_col == j): 
-				valid_n = False
+		# start multiple at 1 (will grow to 2, 3, ... as needed)
+		mult = 1
 
-			# return False if at the edge of a row
+		while (char == '.'):
+			# set values of n_row and n_col
+			n_row = i + mult*r
+			n_col = j + mult*c
+
+			# run checks to see if we've reached an edge,
+			# in which case break out of while loop and
+			# do not append a neighbour
 			if (n_row < 0) or (n_row >= numberofrows):
-				valid_n = False
-
-			# return False if at the edge of a column
+				break
 			if (n_col < 0) or (n_col >= numberofcols):
-				valid_n = False
+				break
 
-			# only runs if board[i,j] is not an edge or
-			# it is not checking board[i][j]
-			if valid_n:
-				n_list.append(isOccupied(board, n_row, n_col))
+			# set char to value at board[n_row][n_col]
+			char = board[n_row][n_col]
+
+			# update mult (allows us to move into outer ring)
+			mult += 1
+
+		# check what char is: if it's
+		# '#' append True
+		# 'L' append False
+		# '.' do nothing (means we reached the edge of a board)
+
+		if char == '#':
+			n_list.append(True)
+		elif char == 'L':
+			n_list.append(False)
+
 	return n_list
 
 def updateState(current, noccupied):
@@ -94,7 +108,7 @@ def updateState(current, noccupied):
 		else:
 			return 'L'
 	if current == '#':
-		if noccupied >= 4:
+		if noccupied >= 5:
 			return 'L'
 		else:
 			return '#'
