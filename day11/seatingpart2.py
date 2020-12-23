@@ -34,7 +34,9 @@ def checkNeighbours(board, i,j):
 	"""
 	this function takes in the position of the seat in question
 	as i (row) and j (column) on the board
-	it checks the 8 neighbours around it to what they are:
+	it must check all 8 directions for the first non '.' it sees
+	(this behaviour could continue up to the edge of the board,
+	in which case it will see no neighbour in that direction)
 
 	'.' 		floor tile, does not change and does not count
 				as occupied seat
@@ -42,12 +44,12 @@ def checkNeighbours(board, i,j):
 	'#' 		occupied seat
 
 	and returns a list of True / False which explain if the seats
-	arround it are empty (False) or occupied (True)
+	that it can see (in all 8 directions) are occupied
 	"""
 
-	# set variable for minimum / maximum search
-	minsearch = -1
-	maxsearch = 2
+	# list of directions to modify search by
+	# (starts at [1,0] and moves counterclockwise)
+	directions = [[1,0], [1,1], [0,1], [-1,1], [-1,0], [-1,-1], [0,-1], [1,-1]]
 
 	# empty list to append neighbours results into
 	n_list = []
@@ -159,6 +161,7 @@ while diff != 0:
 
 print('After stabilization, there are ' + str(thisstate) + \
 	' seats occupied.')
+
 
 end = time.process_time()
 
