@@ -1,7 +1,7 @@
 import time
 import numpy as np
 
-print('~ * ~ Day 12 Part 1 ~ * ~')
+print('~ * ~ Day 12 Part 2 ~ * ~')
 start = time.process_time()
 
 inputfile = './input.txt'
